@@ -21,13 +21,14 @@ protected:
 private:
     //负责任务ID
     static std::atomic<size_t>  nRequestID_;
+
     // 任务取消状态
     std::atomic<bool>           isCancelRequired_;
 
 public:
 
     OETask(void) :id_(nRequestID_++), isCancelRequired_(false),
-        createTime_(clock()){}
+        createTime_(clock()){};
 
     virtual ~OETask(void) {};
 
@@ -67,7 +68,9 @@ public:
 
 };
 
-__declspec(selectany) std::atomic<size_t> OETask::nRequestID_ = 100000;
+//__declspec(selectany) std::atomic<size_t> OETask::nRequestID_ = 100000;
+std::atomic<size_t>OETask::nRequestID_(100000);
+
 
 #endif // __OETASK_H__
 
