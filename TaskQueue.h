@@ -164,7 +164,7 @@ public:
 
 
         //任务执行完后再返回
-        while (mapDoingTask_.empty())
+        while (!mapDoingTask_.empty())
             std::this_thread::sleep_for(std::chrono::milliseconds(50));
 
 
